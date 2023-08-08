@@ -37,4 +37,3 @@ typing_extensions
 tzdata
 urllib3
 uvicorn
-python
