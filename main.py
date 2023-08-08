@@ -216,6 +216,8 @@ async def predict(
         "early_access": [early_access],
         "selected_genre": genre,
         "prediction": prediction[0],
+        "rmse" : 7.918355069327722,
+        "r2" : 0.3603363086909447
     }
 
 
