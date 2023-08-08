@@ -12,11 +12,11 @@ app = FastAPI(
 
 
 df_parquet = pd.read_parquet(
-    "../data/parquet/steam_model_api_parquet.parquet", engine="pyarrow"
+    "./data/parquet/steam_model_api_parquet.parquet", engine="pyarrow"
 )
 df_v = df_parquet.copy()
 ## abrir modelo
-with open("../modelos/modelo_entrenado_v3.pkl", "rb") as model_file:
+with open("./modelos/modelo_entrenado_v3.pkl", "rb") as model_file:
     model = pickle.load(model_file)
 
 
