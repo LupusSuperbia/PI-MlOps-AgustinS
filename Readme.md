@@ -106,5 +106,5 @@ Se presenta un video de demostración mostrando consultas a la API y explicando 
 Consulta los [recursos adicionales](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md) disponibles para el proyecto.
 
 ## Redes Personales 
-[LinkedIn] (https://www.linkedin.com/in/agustin-samperi/)
-[GitHub] (https://github.com/Pridewolf?tab=overview&from=2023-08-01&to=2023-08-08)
+[LinkedIn](https://www.linkedin.com/in/agustin-samperi/)
+[GitHub](https://github.com/Pridewolf?tab=overview&from=2023-08-01&to=2023-08-08)
