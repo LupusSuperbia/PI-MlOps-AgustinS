@@ -1,6 +1,5 @@
 # Proyecto Individual Nº1 - Machine Learning Operations (MLOps)
-<center>
-
+<div align="center">
 ![Henry Logo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 </center>
 <h1 align="center">  Descripción </h1>
