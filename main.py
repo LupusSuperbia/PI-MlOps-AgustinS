@@ -6,7 +6,7 @@ import pickle
 
 app = FastAPI(
     title="Steam Games Api ",
-    description="Esta api es creada con la intención de que se pueda obtener a traves de metodos de solicitud HTTP diferente contenidos de nuestros dataframes de steam games",
+    description="Esta api es creada con la intención de que se pueda obtener a traves de metodos de solicitud HTTP diferentes contenidos de nuestros dataframes de steam games",
     version="1.0.0",
 )
 

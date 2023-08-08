@@ -1,130 +1,111 @@
-<p align=center><img src=https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png><p>
+# Proyecto Individual Nº1 - Machine Learning Operations (MLOps)
+<center>
 
-# <h1 align=center> **PROYECTO INDIVIDUAL Nº1** </h1>
+![Henry Logo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 
-# <h1 align=center>**`Machine Learning Operations (MLOps)`**</h1>
+</center>
+## <h1 align="center">  Descripción </h1>
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/67664604/217914153-1eb00e25-ac08-4dfa-aaf8-53c09038f082.png"  height=300>
-</p>
+Este repositorio contiene mi primer proyecto individual de la etapa de labs en Henry, donde asumo el rol de un MLOps Engineer. El objetivo del proyecto es llevar un modelo de recomendación al mundo real, abordando desde la preparación de datos hasta la creación de una API para consultas y la implementación de un modelo de predicción de precios de videojuegos.
 
-¡Bienvenidos al primer proyecto individual de la etapa de labs! En esta ocasión, deberán hacer un trabajo situándose en el rol de un ***MLOps Engineer***.  
+##  <h1 align="center">  Contexto y Rol </h1>
 
-<hr>  
+Como Data Scientist en Steam, me enfrento al desafío de predecir el precio de un videojuego. Los datos disponibles presentan dificultades por la cantidad de datos nulos que se encuentran en las distintas columnas, y tambien datos que pueden llegar a ser irrelevantes para mi modelo. Para abordar este desafío, asumiré el rol de Data Engineer y MLOps Engineer.
+<h1 align="center"> Estructura de datos  </h1>
 
-## **Descripción del problema (Contexto y rol a desarrollar)**
+```
+Steam_ml_api_mlops/
+├── Data/
+│   ├── json/
+│   ├── csv/
+│   └── parquet/
+├── modelos/
+├── notebooks/
+├── scripts/
+└── src/
+└── main.py
+```
+## <h1 align="center"> Propuesta de Trabajo
 
-## Contexto
+<center>
 
-Tienes tu modelo de recomendación dando unas buenas métricas :smirk:, y ahora, cómo lo llevas al mundo real? :eyes:
+![Steam](https://th.bing.com/th/id/OIP._M3izRCJakZiQrgJ0p9WVAHaEK?pid=ImgDet&rs=1)
+</center>
 
-El ciclo de vida de un proyecto de Machine Learning debe contemplar desde el tratamiento y recolección de los datos (Data Engineer stuff) hasta el entrenamiento y mantenimiento del modelo de ML según llegan nuevos datos.
+### <h2 align="center"> ETL-Scrapping </h2>
+En la primer instancia del proyecto hice un script para extraer los datos faltantes que habia en release_date y sentiment, ¿Cómo hice esto? Através de webscrapping donde teniamos un filtro para obtener las url de los años que eran nulos, entonces a partir de esto podiamos entrar a la url y acceder a la información que faltaba, esto no salió a la perfección porque hubo muchos datos nulos igualmente pero quería hacer la prueba 
 
+### <h2 align="center"> ETL </h2>
 
-## Rol a desarrollar
+En el MVP, el enfoque será en la lectura adecuada del dataset para su uso en la REST-api, y su uso en el modelo
 
-Empezaste a trabajar como **`Data Scientist`** en Steam, una plataforma multinacional de videojuegos. El mundo es bello y vas a crear tu primer modelo de ML que soluciona un problema de negocio: Steam pide que te encargues de predecir el precio de un videojuego. :worried:
+### <h2 align="center">  Desarrollo API </h2>
 
-Vas a sus datos y te das cuenta que la madurez de los mismos es poca (ok, es nula :sob: ): Datos anidados, sin transformar, no hay procesos automatizados para la actualización de nuevos productos, entre otras cosas….  haciendo tu trabajo imposible :weary: . 
+Se crea una API utilizando FastAPI para realizar consultas sobre los datos:
 
-Debes empezar desde 0, haciendo un trabajo rápido de **`Data Engineer`** y tener un **`MVP`** (_Minimum Viable Product_) para el cierre del proyecto! Tu cabeza va a explotar 🤯, pero al menos sabes cual es, conceptualmente, el camino que debes de seguir :exclamation:. Así que te espantas los miedos y te pones manos a la obra :muscle:
+- Consulta de géneros más lanzados en un año. ``def genero(anio : str)`` 
+- Consulta de juegos lanzados en un año. ``def juegos(anio : str)`` 
+- Consulta de specs más repetidos en un año. ``def specs(anio : str)`` 
+- Consulta de juegos lanzados en un año con early access.  ``def access(anio : str)`` 
+- Consulta del análisis de sentimiento según el año de lanzamiento. ``def sentiment(anio : str)`` 
+- Consulta de los top 5 juegos según año con mayor metascore. ``def metascore(anio : str)`` 
 
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=500>
-</p>
+### <h2 align="center"> Deployment  </h2>
 
-<sub> Nota que aqui se reflejan procesos no herramientas tecnologicas. Haz el ejercicio de entender cual herramienta del stack corresponde a cual parte del proceso<sub/>
+<div display="flex">
+<center>
+<section>
+<h2> Servicio para hacer deploy de nuestra api </h2>
+<h3 >Render </h3>
 
-## **Propuesta de trabajo (requerimientos de aprobación)**
+![Render Logo](https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/j8z02ssteea4zj1k1nyz)
 
-**`Transformaciones`**:  Para este MVP no necesitas transformar los datos dentro del dataset pero trabajaremos en leer el dataset con el formato correcto.
+La API se despliega en [Render](https://mlops-agustin-samperi.onrender.com) para su consumo.
+</section>
+<h2>FrameWork Usados</h2>
 
-**`Desarrollo API`**:   Propones disponibilizar los datos de la empresa usando el framework ***FastAPI***. Las consultas que propones son las siguientes:
+![FastApi Logo](https://th.bing.com/th/id/OIP.pGkVSWn5t5W8Hoi5WAkOEAAAAA?pid=ImgDet&rs=1)
 
-Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerden que deben tener un decorador por cada una (@app.get(‘/’)).
+![Pandas](https://www.kindpng.com/picc/m/574-5747046_python-pandas-logo-transparent-hd-png-download.png)
 
-+ def **genero( *`Año`: str* )**:
-    Se ingresa un año y devuelve una lista con los 5 géneros más ofrecidos en el orden correspondiente.
+![Scikit-learn](https://th.bing.com/th/id/OIP.lkqc68a6b7_TLALs5fmI6AHaD_?pid=ImgDet&rs=1)
 
-+ def **juegos( *`Año`: str* )**:
-    Se ingresa un año y devuelve una lista con los juegos lanzados en el año.
+![Numpy](https://th.bing.com/th/id/OIP.SWV16sONAikzxOEE-So3XwHaC7?pid=ImgDet&rs=1)
 
-+ def **specs( *`Año`: str* )**:
-    Se ingresa un año y devuelve una lista con los 5 specs que más se repiten en el mismo en el orden correspondiente. 
+</center>
 
-+ def **earlyacces( *`Año`: str* )**:
-    Cantidad de juegos lanzados en un año con early access.
-
-+ def **sentiment( *`Año`: str* )**:
-    Según el año de lanzamiento, se devuelve una lista con la cantidad de registros que se encuentren categorizados con un análisis de sentimiento. 
-
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ejemplo de retorno: *{Mixed = 182, Very Positive = 120, Positive = 278}*
-
-+ def **metascore( *`Año`: str* )**:
-    Top 5 juegos según año con mayor metascore.
-
-
-
-<br/>
-
-
-> `Importante`<br>
-El MVP _tiene_ que ser una API que pueda ser consumida segun los criterios de [API REST o RESTful](https://rockcontent.com/es/blog/api-rest/). Algunas herramientas como por ejemplo, Streamlit, si bien pueden brindar una interfaz de consulta, no cumplen con las condiciones para ser consideradas una API, sin workarounds.
-
-
-**`Deployment`**: Conoces sobre [Render](https://render.com/docs/free#free-web-services) y tienes un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial) que te hace la vida mas facil :smile: . Tambien podrias usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
-
-<br/>
-
-**`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
-
-Ya los datos están limpios, ahora es tiempo de investigar las relaciones que hay entre las variables del dataset, ver si hay outliers o anomalías (que no tienen que ser errores necesariamente :eyes: ), y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. Las nubes de palabras dan una buena idea de cuáles palabras son más frecuentes en los títulos, ¡podría ayudar al sistema de predicción! En esta ocasión vamos a pedirte que no uses librerías para hacer EDA automático ya que queremos que pongas en practica los conceptos y tareas involucrados en el mismo. Puedes leer un poco más sobre EDA en [este articulo](https://medium.com/swlh/introduction-to-exploratory-data-analysis-eda-d83424e47151)
-
-**`Modelo de predicción`**: 
-
-Una vez que toda la data es consumible por la API, está lista para consumir por los departamentos de Analytics y Machine Learning, y nuestro EDA nos permite entender bien los datos a los que tenemos acceso, es hora de entrenar nuestro modelo de machine learning para armar un modelo de predicción. El mismo deberá basarse en características como Género, Año, Metascore y/o las que creas adecuadas. Tu líder pide que el modelo derive en un GET/POST en la API simil al siguiente formato:
-
-+ def **predicción( *`genero, earlyaccess = True/False, (Variables que elijas)`* )**:
-    Ingresando estos parámetros, deberíamos recibir el precio y **RMSE**.
-
-**`Video`**: Necesitas que al equipo le quede claro que tus herramientas funcionan realmente! Haces un video mostrando el resultado de las consultas propuestas y de tu modelo de ML entrenado! Recuerda presentarte, contar muy brevemente de que trata el proyecto y lo que vas a estar mostrando en el video.
-Para grabarlo, puedes usar la herramienta Zoom, haciendo una videollamada y grabando la pantalla, aunque seguramente buscando, encuentres muchas formas mas. 😉
-
-<sub> **Spoiler**: El video NO DEBE durar mas de ***7 minutos*** y DEBE mostrar las consultas requeridas en funcionamiento desde la API y una breve explicacion del modelo utilizado para el sistema de recomendacion. En caso de que te sobre tiempo luego de grabarlo, puedes mostrar explicar tu EDA, ETL e incluso cómo desarrollaste la API. <sub/>
-
-<br/>
-
-## **Criterios de evaluación**
-
-**`Código`**: Prolijidad de código, uso de clases y/o funciones, en caso de ser necesario, código comentado. 
-
-**`Repositorio`**: Nombres de archivo adecuados, uso de carpetas para ordenar los archivos, README.md presentando el proyecto y el trabajo realizado. Recuerda que este último corresponde a la guía de tu proyecto, no importa que tan corto/largo sea siempre y cuando tu 'yo' + 1.5 AÑOS pueda entenderlo con facilidad. 
-
-**`Cumplimiento`** de los requerimientos de aprobación indicados en el apartado `Propuesta de trabajo`
-
-NOTA: Recuerde entregar el link de acceso al video. Puede alojarse en YouTube, Drive o cualquier plataforma de almacenamiento. **Verificar que sea de acceso público, recomendamos usar modo incógnito en tu navegador para confirmarlo**.
-
-<br/>
-Aqui te sintetizamos que es lo que consideramos un MVP aprobatorio, y la diferencia con un producto completo.
+</div>
 
 
 
-<p align="center">
-<img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/MVP_MLops.PNG"  height=250>
-</p>
+###  <h2 align="center">  Análisis Exploratorio de los Datos (EDA) </h2>
 
+Se realiza un análisis manual de los datos para comprender relaciones, outliers y patrones interesantes (Esta parte la emepece a hacer en conjunto con el ETL por eso hay partes donde hago analisis exploratorio en el mismo archivo [ETL_2](https://github.com/Pridewolf/PI-MlOps-AgustinS/blob/main/notebooks/ETL_2.ipynb).
+ 
+###  <h2 align="center">  Modelo de Predicción </h2>
 
-## **Fuente de datos**
+Se entrena un [modelo](https://github.com/Pridewolf/PI-MlOps-AgustinS/blob/main/notebooks/Modelo.ipynb) de machine learning para predecir precios de videojuegos, basado en género, año, early_access y metascore.
 
-+ [Dataset](https://drive.google.com/drive/folders/1HqBG2-sUkz_R3h1dZU5F2uAzpRn7BSpj?usp=drive_link): Carpeta con el archivo que requieren ser procesados, tengan en cuenta que hay datos que estan anidados (un diccionario o una lista como valores en la fila).
-+ [Diccionario de datos](https://docs.google.com/spreadsheets/d/1-t9HLzLHIGXvliq56UE_gMaWBVTPfrlTf2D9uAtLGrk/edit?usp=drive_link): Diccionario con algunas descripciones de las columnas disponibles en el dataset.
-<br/>
+### <h2 align="center">   Video </h2>
 
-## **Material de apoyo**
+Se presenta un video de demostración mostrando consultas a la API y explicando el modelo de predicción. [VIDEO](https://www.youtube.com/watch?v=CMcQu7exAHs&feature=youtu.be)
 
-En este mismo repositorio podras encontrar algunos [links de ayuda](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md). Recuerda que no son los unicos recursos que puedes utilizar!
+##  <h2 align="center">  Criterios de Evaluación </h2>
 
+- Prolijidad del código.
+- Organización del repositorio y uso de carpetas.
+- Cumplimiento de los requerimientos propuestos.
+- Entrega del video de demostración.
 
+## Fuente de Datos
 
-  
-<br/>
+- [Dataset](https://drive.google.com/drive/folders/1HqBG2-sUkz_R3h1dZU5F2uAzpRn7BSpj?usp=drive_link)
+- [Diccionario de Datos](https://docs.google.com/spreadsheets/d/1-t9HLzLHIGXvliq56UE_gMaWBVTPfrlTf2D9uAtLGrk/edit?usp=drive_link)
+
+## Material de Apoyo
+
+Consulta los [recursos adicionales](https://github.com/HX-PRomero/PI_ML_OPS/raw/main/Material%20de%20apoyo.md) disponibles para el proyecto.
+
+## Redes Personales 
+[LinkedIn] (https://www.linkedin.com/in/agustin-samperi/)
+[GitHub] (https://github.com/Pridewolf?tab=overview&from=2023-08-01&to=2023-08-08)
