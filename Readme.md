@@ -2,8 +2,8 @@
 <div align="center">
 ![Henry Logo](https://d31uz8lwfmyn8g.cloudfront.net/Assets/logo-henry-white-lg.png)
 </center>
+</div>
 <h1 align="center">  Descripción </h1>
-
 Este repositorio contiene mi primer proyecto individual de la etapa de labs en Henry, donde asumo el rol de un MLOps Engineer. El objetivo del proyecto es llevar un modelo de recomendación al mundo real, abordando desde la preparación de datos hasta la creación de una API para consultas y la implementación de un modelo de predicción de precios de videojuegos.
 
 <h1 align="center">  Contexto y Rol </h1>
