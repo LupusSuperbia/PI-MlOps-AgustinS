@@ -79,7 +79,7 @@ La API se despliega en [Render](https://mlops-agustin-samperi.onrender.com) para
 
 <h2 align="center">  Análisis Exploratorio de los Datos (EDA) </h2>
 
-Se realiza un análisis manual de los datos para comprender relaciones, outliers y patrones interesantes (Esta parte la emepece a hacer en conjunto con el ETL por eso hay partes donde hago analisis exploratorio en el mismo archivo [ETL_2](https://github.com/Pridewolf/PI-MlOps-AgustinS/blob/main/notebooks/ETL_2.ipynb).
+Se realiza un análisis manual de los datos para comprender relaciones, outliers y patrones interesantes (Esta parte la hice en conjunto con el ETL ya que se me hizo mas comod a la hora de empezar a limpiar datos [ETL_2](https://github.com/Pridewolf/PI-MlOps-AgustinS/blob/main/notebooks/ETL_2.ipynb).
  
 <h2 align="center">  Modelo de Predicción </h2>
 
