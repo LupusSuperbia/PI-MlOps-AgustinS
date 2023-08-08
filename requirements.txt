@@ -22,7 +22,7 @@ pyarrow
 pydantic
 pydantic_core
 pyparsing
-python-dateuti
+python-dateutiL
 pytz
 requests
 scikit-learn
